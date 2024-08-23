@@ -20,7 +20,8 @@ const formik = useFormik({
   },
 
   onSubmit: values => {
-    console.log(values)
+    localStorage.setItem('loginData', JSON.stringify(values));
+    
   },
 });
 
