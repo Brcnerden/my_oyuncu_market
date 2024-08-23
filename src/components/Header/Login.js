@@ -19,7 +19,7 @@ export const Login = () => {
       email: Yup.string().email('Invalid email address').required('Required'),
     }),
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      console.log(values)
     },
   });
 
