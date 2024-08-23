@@ -1,27 +1,18 @@
-import Image from "next/image";
-
+import { HomePage } from "../contaniers/Home/HomePage";
+ 
 export default function Home() {
   return (
-    <main className="max-w-[1200px] w-full m-auto roboto ">
-      <div className="flex justify-between h-[48px] items-center">
-        <Image
-          src="/Images/tr.jpeg"
-          width={40}
-          height={30}
-          className="h-[24px]"
-          alt="flag"
-        />
-        <div className="flex text-[14px] roboto_light  ">
-          <div className="mr-[16px]">Bakiye Yükle</div>
-          <div className="mr-[16px]">Satış Yap</div>
-          <div>Yardım</div>
-        </div>
-      </div>
-      <div className="h">
-        <div className="playfair_display w-[200px] h-[80px] flex items-center text-[20px]  ">
-          OYUNCUMARKET
-        </div>
-      </div>
+    <main>
+    <HomePage/>
+      
+     
     </main>
   );
 }
+
+
+// input  #ced1d7 Butonların Rengi: #43655a Logo Rengi: #5f7f7f 
+// #f0f0f0 ,#ced1d7,#a9b5bd,#829aa0,#5f7f7f,#43655
+// navbar bg-#f0f0f0  #ced1d7
+// Yazı Rengi: #5f7f7f veya #43655a 
+//Buton İçindeki Metin Rengi: #ffffff
