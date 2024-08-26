@@ -18,9 +18,35 @@ const formik = useFormik({
     password:"",
     passwordAgain:"",
   },
+  validationSchema: Yup.object({
+    name: Yup.string()
+      .max(15, 'Ad 15 karakterden az olmalı')
+      .required('Bu alan zorunludur'),
+  
+    lastName: Yup.string()
+      .max(20, 'Soyad 20 karakterden az olmalı')
+      .required('Bu alan zorunludur'),
+  
+    email: Yup.string()
+      .email('Geçersiz e-posta adresi')
+      .required('Bu alan zorunludur'),
+  
+    password: Yup.string()
+      .min(8, 'Şifre en az 8 karakter olmalı')
+      .required('Bu alan zorunludur'),
+  
+    passwordAgain: Yup.string()
+      .oneOf([Yup.ref('password'), null], 'Şifreler eşleşmiyor')
+      .required('Bu alan zorunludur'),
+  }),
+  validateOnChange: true,  
+  validateOnBlur: true, 
+
 
   onSubmit: values => {
+    console.log('daat', JSON.stringify(values));
     localStorage.setItem('loginData', JSON.stringify(values));
+    formik.resetForm()
     
   },
 });
@@ -81,25 +107,40 @@ const formik = useFormik({
             <form  onSubmit={formik.handleSubmit}  >
 <div className="flex max-md:flex-col">
           <div className="flex flex-col mr-[20px] max-md:mr-0">
-          <label htmlFor="name" className="text-[20px] ml-4">Ad</label>
-          <input name="name" value={formik.values.name}  onChange={formik.handleChange} type="text" className="mt-[8px] text-[12px] rounded-lg px-[6px] py-[12px] w-[220px] max-md:w-auto bg-[#F0F0F0]" placeholder="Lütfen adınızı buraya giriniz..."/>
+          <label  className="text-[20px] ml-4">Ad</label>
+          <input  {...formik.getFieldProps('name')} type="text" className="mt-[8px] text-[12px] rounded-lg px-[6px] py-[12px] w-[220px] max-md:w-auto bg-[#F0F0F0]" placeholder="Lütfen adınızı buraya giriniz..."/>
+          {formik.touched.name && formik.errors.name ? (
+         <div className='text-[12px] text-red-800 mt-[8px] ml-[12px]'>{formik.errors.name}</div>
+       ) : null}
           </div> 
           <div className="flex flex-col">
-          <label htmlFor="lastName" className="text-[20px] ml-4">Soyad</label>
-          <input name="lastName" value={formik.values.lastName}  onChange={formik.handleChange} type="text" className="mt-[8px] text-[12px] rounded-lg px-[8px] py-[12px] w-[220px] max-md:w-auto bg-[#F0F0F0]" placeholder="Lütfen soyadınızı buraya giriniz..."/>
+          <label  className="text-[20px] ml-4">Soyad</label>
+          <input  {...formik.getFieldProps('lastName')} type="text" className="mt-[8px] text-[12px] rounded-lg px-[8px] py-[12px] w-[220px] max-md:w-auto bg-[#F0F0F0]" placeholder="Lütfen soyadınızı buraya giriniz..."/>
+          {formik.touched.lastName && formik.errors.lastName ? (
+         <div className='text-[12px] text-red-800 mt-[8px] ml-[12px]'>{formik.errors.lastName}</div>
+       ) : null}
           </div>
           </div>
           <div className="flex flex-col mt-[20px]">
           <label htmlFor="email" className="text-[20px] ml-4">E-mail</label>
-          <input name="email" value={formik.values.email} onChange={formik.handleChange}  type="email" className="mt-[8px] text-[12px] rounded-lg px-[8px] py-[12px] w-auto bg-[#F0F0F0]" placeholder="Lütfen email adresinizi buraya giriniz..."/>
+          <input name="email"  {...formik.getFieldProps('email')}  type="email" className="mt-[8px] text-[12px] rounded-lg px-[8px] py-[12px] w-auto bg-[#F0F0F0]" placeholder="Lütfen email adresinizi buraya giriniz..."/>
+          {formik.touched.email && formik.errors.email ? (
+         <div className='text-[12px] text-red-800 mt-[8px] ml-[12px]'>{formik.errors.email}</div>
+       ) : null}
           </div>
           <div className="flex flex-col mt-[20px]">
           <label htmlFor="password" className="text-[20px] ml-4">Şifre</label>
-          <input name="password" value={formik.values.password} onChange={formik.handleChange}  type="password" className="mt-[8px] text-[12px] rounded-lg px-[8px] py-[12px] w-auto bg-[#F0F0F0]" placeholder="Lütfen şifrenizi giriniz..."/>
-          </div>
+          <input name="password" {...formik.getFieldProps('password')}  type="password" className="mt-[8px] text-[12px] rounded-lg px-[8px] py-[12px] w-auto bg-[#F0F0F0]" placeholder="Lütfen şifrenizi giriniz..."/>
+          {formik.touched.password && formik.errors.password ? (
+         <div className='text-[12px] text-red-800 mt-[8px] ml-[12px]'>{formik.errors.password}</div>
+       ) : null}
+</div>
           <div className="flex flex-col mt-[20px]">
           <label htmlFor="passwordAgain" className="text-[20px] ml-4">Şifre Tekrar</label>
-          <input type="password" name="passwordAgain" value={formik.values.passwordAgain} onChange={formik.handleChange} className="mt-[8px] text-[12px] rounded-lg px-[8px] py-[12px] w-auto bg-[#F0F0F0]" placeholder="Lütfen şifrenizi tekrar  giriniz..."/>
+          <input type="password" name="passwordAgain" {...formik.getFieldProps('passwordAgain')} className="mt-[8px] text-[12px] rounded-lg px-[8px] py-[12px] w-auto bg-[#F0F0F0]" placeholder="Lütfen şifrenizi tekrar  giriniz..."/>
+          {formik.touched.passwordAgain && formik.errors.passwordAgain ? (
+         <div className='text-[12px] text-red-800 mt-[8px] ml-[12px]'>{formik.errors.passwordAgain}</div>
+       ) : null}
           </div>
           <div className="flex  mt-[20px] text-[12px] text-[#F0F0F0] max-md:flex-col ">
           <button  type="submit"    className="bg-black rounded-lg   px-[6px] py-[12px] w-[220px] max-md:w-auto">

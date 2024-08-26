@@ -19,9 +19,10 @@ module.exports = {
         "textsecandy-color":"#383838",
         "header_bgColor":"#F7F7F7" ,
         gray100:"#A1A1AA",
-
         gray200:" #999999",
         white100:"#E5E5E5",
+        white200:"#DDDDDD",
+        red100:"#ed4d50",
 
       },
     },

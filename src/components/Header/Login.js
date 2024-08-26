@@ -17,7 +17,8 @@ export const Login = () => {
     }),
     onSubmit: values => {
       localStorage.setItem('loginData', JSON.stringify(values));
-      console.log(values)
+      console.log(values),
+      formik.resetForm()
 
 
     },

@@ -2,6 +2,7 @@
 import Icons from "@/Icons";
 import React, { useState, useRef, useEffect } from "react";
 import { SingUp } from "./SingUp";
+import { Basket } from "./Basket";
 
 
 export const Header = () => {
@@ -45,7 +46,7 @@ export const Header = () => {
 
 
         <div className="flex justify-between py-[8px]">
-          <div className="text-[32px]">LOGO</div>
+          <div className="text-[32px] font-Playwrite">LOGO</div>
           <div className="flex items-center text-text-color font-light font-Roboto text-[20px] max-md:hidden">
             <div className="mr-[28px] cursor-pointer">E-pin</div>
             <div className="mr-[28px] cursor-pointer">CD-Key</div>
@@ -122,6 +123,8 @@ export const Header = () => {
 
     </div>
     <SingUp isOpen={isOpenLogin} setisOpen={setIsOpenLogin}/>
+    <Basket isBasketOpen={isOpenBasket} setisBasketOpen={setIsOpenBasket}/>
+
     <div>
     </div>
 
