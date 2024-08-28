@@ -7,6 +7,16 @@ import Trash from './Trash.svg'
 import Chevron from './Chevron.svg'
 import CloseButton from './CloseButton.svg'
 import ShoppingBag from './ShoppingBag.svg'
+import ArrowRight from './ArrowRight.svg'
+import Jet from './Jet.svg'
+import Safe from './Safe.svg'
+import Money from './Money.svg'
+import Smile from './Smile.svg'
+
+
+
+
+
 
 
 
@@ -22,6 +32,12 @@ const Icons = createIcons({
     CloseButton,
     Trash,
     Chevron,
+    ArrowRight,
+    Jet,
+    Safe,
+    Money,
+    Smile
+    
 
 
 

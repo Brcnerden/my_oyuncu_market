@@ -3,12 +3,23 @@ import Icons from "@/Icons";
 import React, { useState, useRef, useEffect } from "react";
 import { SingUp } from "./SingUp";
 import { Basket } from "./Basket";
+import { useRouter } from "next/navigation";
+import Link from 'next/link';
+import useCartStore from "@/store/BasketStore";
+
 
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isOpenLogin, setIsOpenLogin] = useState(false);
   const [isOpenBasket, setIsOpenBasket] = useState(false);
+
+  const router=useRouter()
+
+  const  cart  = useCartStore((state) =>  state.cart,
+);
+
+const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
 
 
@@ -34,6 +45,12 @@ export const Header = () => {
     };
   }, []);
 
+
+  const handleBasketClick = () => {
+    router.push('/Sepetim');
+  };
+
+
   return (
     <>
      <div className="bg-white">
@@ -46,7 +63,10 @@ export const Header = () => {
 
 
         <div className="flex justify-between py-[8px]">
-          <div className="text-[32px] font-Playwrite">LOGO</div>
+          <Link href="./">
+          <div className="text-[32px] font-Playwrite text-red-800">LOGO</div>
+
+          </Link>
           <div className="flex items-center text-text-color font-light font-Roboto text-[20px] max-md:hidden">
             <div className="mr-[28px] cursor-pointer">E-pin</div>
             <div className="mr-[28px] cursor-pointer">CD-Key</div>
@@ -60,10 +80,10 @@ export const Header = () => {
             <button onClick={()=>setIsOpenLogin(!isOpenLogin)}>
               <Icons.User className="w-[24px] h-[24px] mr-[20px]" />
             </button>
-            <button onClick={()=>setIsOpenBasket(!isOpenBasket)} className="relative">
+            <button onClick={handleBasketClick} className="relative">
               <Icons.ShoppingBag className="w-[24px] h-[24px] mr-[20px]" />
-              <div className="bg-text-color w-[16px] h-[16px] text-center absolute bottom-[-4px] right-[16px] text-white text-[12px] rounded-full">
-                0
+              <div className="bg-red-800 w-[16px] h-[16px] text-center absolute bottom-[-4px] right-[16px] text-white text-[12px] rounded-full">
+                {totalQuantity}
               </div>
             </button>
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden">

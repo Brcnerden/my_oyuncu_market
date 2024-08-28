@@ -96,7 +96,7 @@ const formik = useFormik({
 
 
         className={`fixed  bottom-1/2 right-1/2  w-[500px] max-md:w-[390px] max-sm:w-[30] max-sm:px-2 max-sm:mx-2 h-auto bg-white transform transition-transform duration-300 ease-in-out z-50 ${
-          isOpen ? "translate-x-[50%] translate-y-[50%] " : "-translate-x-full -translate-y-full"
+          isOpen ? "translate-x-[50%] translate-y-[50%] " : "-translate-x-full -translate-y-full -z-50"
         }`}
       >
         <div className={`my-[40px] px-[20px] ${loginButton ? "hidden":""}`}>

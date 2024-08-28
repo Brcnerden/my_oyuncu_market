@@ -22,7 +22,10 @@ module.exports = {
         gray200:" #999999",
         white100:"#E5E5E5",
         white200:"#DDDDDD",
+        white300:"#eeeee6",
+        white400:"#f4f4f1",
         red100:"#ed4d50",
+
 
       },
     },

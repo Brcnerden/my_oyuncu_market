@@ -12,7 +12,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 
-// import required modules
 import { EffectCoverflow, Pagination,Navigation } from 'swiper/modules';
 import Icons from '@/Icons';
 
@@ -35,7 +34,7 @@ const Banner = () => {
   }, [])
 
   return (
-    <div className='max-w-[1400px] w-full  mx-auto mt-5'>
+    <div className='  mt-5 mx-[60px]'>
 
 <Swiper
   effect={'coverflow'}
@@ -46,7 +45,7 @@ const Banner = () => {
   coverflowEffect={{
     rotate: 0,
     stretch: 0,
-    depth: 100,
+    depth: 200,
     modifier: 2,
     slideShadows: false, 
   }}
@@ -69,7 +68,7 @@ const Banner = () => {
           src={item.image[0]} 
           width={1200} 
           height={300} 
-          alt={item.title} 
+          alt="resim" 
           className={classNames(
             "  mt-10 object-cover",
             key === currentSlideIndex ? 'opacity-25  ': 'opacity-100 w-[1200px] border-2 border-textsecandy-color'

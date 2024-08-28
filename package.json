@@ -20,7 +20,8 @@
     "react-dom": "^18",
     "react-feather": "^2.0.10",
     "swiper": "^11.1.10",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "eslint": "^8",

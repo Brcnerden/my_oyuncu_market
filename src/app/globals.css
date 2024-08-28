@@ -48,7 +48,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        pointer-events: none; /* Bu, sliderın ana kaydırma hareketini bozmadan düğmeleri etkinleştirir */
+        pointer-events: none; 
       }
       
       .slider-arrow {
