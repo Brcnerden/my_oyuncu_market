@@ -2,7 +2,16 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-      domains: ['cdn.ksobilisim.com'],
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'cdn.ksobilisim.com',
+        },
+        {
+          protocol: 'https',
+          hostname: 'cdn.ksobilisim.com',
+        },
+      ],
     },
     webpack(config) {
       // Grab the existing rule that handles SVG imports

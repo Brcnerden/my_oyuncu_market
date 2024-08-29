@@ -142,7 +142,7 @@ export const BasketPage = () => {
 
                     {
                        
-                       showAddress ? <Adress showAddress={showAddress} /> :<CardAccount basketButton={basketButton} setBasketButton={(data) => setBasketButton(data)} showAddress={showAddress} setShowAddress={setShowAddress}/>
+                       showAddress ? <Adress showAddress={showAddress} setShowAddress={setShowAddress} /> :<CardAccount basketButton={basketButton} setBasketButton={(data) => setBasketButton(data)} showAddress={showAddress} setShowAddress={setShowAddress}/>
                     }
                     
                     

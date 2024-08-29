@@ -6,6 +6,7 @@ import { Basket } from "./Basket";
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
 import useCartStore from "@/store/BasketStore";
+import { OpenMenu } from "./OpenMenu";
 
 
 
@@ -13,6 +14,7 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isOpenLogin, setIsOpenLogin] = useState(false);
   const [isOpenBasket, setIsOpenBasket] = useState(false);
+  const [navbarMenuOpen,setNavbarMenuOpen]=useState(false);
 
   const router=useRouter()
 
@@ -24,6 +26,10 @@ const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
 
   const menuRef = useRef(null);
+
+
+
+
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -68,7 +74,8 @@ const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
           </Link>
           <div className="flex items-center text-text-color font-light font-Roboto text-[20px] max-md:hidden">
-            <div className="mr-[28px] cursor-pointer">E-pin</div>
+            
+            <button onClick={()=>{setNavbarMenuOpen(!navbarMenuOpen)}} className="mr-[28px] font-normal hover:after:bg-red-800 hover:underline-offset-4 hover:after:content-[''] hover:after:block hover:after:w-full hover:after:h-[2px] pb-[2px] cursor-pointer">E-pin</button>
             <div className="mr-[28px] cursor-pointer">CD-Key</div>
             <div className="mr-[28px] cursor-pointer">Oyun Parası</div>
             <div className="mr-[28px] cursor-pointer">CS:GO Skin</div>
@@ -147,6 +154,11 @@ const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
     <div>
     </div>
+    {
+    
+    navbarMenuOpen ?<OpenMenu/> :""
+    }
+
 
     </>
    
