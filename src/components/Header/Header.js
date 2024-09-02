@@ -15,6 +15,7 @@ export const Header = () => {
   const [isOpenLogin, setIsOpenLogin] = useState(false);
   const [isOpenBasket, setIsOpenBasket] = useState(false);
   const [navbarMenuOpen,setNavbarMenuOpen]=useState(false);
+  const [selectionItems,setSelectionItems]=useState(null)
 
   const router=useRouter()
 
@@ -27,7 +28,14 @@ const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
   const menuRef = useRef(null);
 
+const handle_clickActiveButton=(active)=>{
+  setNavbarMenuOpen(active)
+  setNavbarMenuOpen(!navbarMenuOpen)
 
+
+
+
+}
 
 
 
@@ -59,7 +67,7 @@ const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <>
-     <div className="bg-white">
+     <div className="bg-white ">
       <div className="max-w-[1200px] w-full mx-auto  max-lg:px-[12px] ">
         <div
           className={`${
@@ -68,17 +76,35 @@ const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
         ></div>
 
 
-        <div className="flex justify-between py-[8px]">
+        <div className="flex justify-between  py-[8px]">
           <Link href="./">
           <div className="text-[32px] font-Playwrite text-red-800">LOGO</div>
 
           </Link>
-          <div className="flex items-center text-text-color font-light font-Roboto text-[20px] max-md:hidden">
+          <div className="flex items-center text-text-color font-light font-Roboto text-[18px] max-md:hidden">
+          <button onClick={() => { 
+                setSelectionItems("E-Pin"); 
+                handle_clickActiveButton("active"==="E-Pin") 
+              }} className="mr-[28px]  font-normal button-hover-effect   cursor-pointer">E-Pin</button>
             
-            <button onClick={()=>{setNavbarMenuOpen(!navbarMenuOpen)}} className="mr-[28px] font-normal hover:after:bg-red-800 hover:underline-offset-4 hover:after:content-[''] hover:after:block hover:after:w-full hover:after:h-[2px] pb-[2px] cursor-pointer">E-pin</button>
-            <div className="mr-[28px] cursor-pointer">CD-Key</div>
-            <div className="mr-[28px] cursor-pointer">Oyun Parası</div>
-            <div className="mr-[28px] cursor-pointer">CS:GO Skin</div>
+
+            <button onClick={() => { 
+                setSelectionItems("CD Key"); 
+                handle_clickActiveButton("active"==="CD-Key") 
+                 
+              }} className="mr-[28px] font-normal button-hover-effect   cursor-pointer">CD-Key</button>
+            <button  onClick={()=>{
+                setSelectionItems("Oyun Parası"); 
+                handle_clickActiveButton("active"==="Oyun Parası") 
+            }} className="mr-[28px]  font-normal  button-hover-effect   cursor-pointer">Oyun Parası</button>
+
+<button  onClick={()=>{
+                setSelectionItems( 
+                  "Oyuncu Pazarı"); 
+                handle_clickActiveButton("active"=== 
+                  "Oyuncu Pazarı") 
+            }} className="mr-[28px] button-hover-effect  font-normal cursor-pointer"> 
+Oyuncu Pazarı</button>
           </div>
           <div className="flex items-center">
             <button>
@@ -156,7 +182,7 @@ const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
     </div>
     {
     
-    navbarMenuOpen ?<OpenMenu/> :""
+    navbarMenuOpen ?<OpenMenu selectionItems={selectionItems} setMenuClose={setNavbarMenuOpen}/> :""
     }
 
 

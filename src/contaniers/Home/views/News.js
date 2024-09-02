@@ -32,7 +32,7 @@ export const News = () => {
 
   const formatDate = (datetime) => {
     const date = new Date(datetime);
-    return date.toLocaleDateString(); // Tarihi "YYYY/MM/DD" formatında döndürür
+    return date.toLocaleDateString(); // gun/ay/yıl formatına donduruyor 
   };
 
   useEffect(()=>{
@@ -70,7 +70,7 @@ export const News = () => {
 
               <h2 className='text-[16px] mt-2 mb-3'>{item.metabaslik}</h2>
               <p className='text-[14px] pb-3 font-light overflow-hidden h-[60px] text-ellipsisn '>
-                        <span dangerouslySetInnerHTML={{ __html: item?.ozet }}></span>
+                        <span className='overflow-hidden' dangerouslySetInnerHTML={{ __html: item?.ozet }}></span>
                       </p>
             </div>
 

@@ -13,3 +13,24 @@
 .text-gradient {
         color: linear-gradient(90deg, #f0f0f0, #ced1d7, #a9b5bd, #829aa0, #5f7f7f, #43655a);
       }
+
+.button-hover-effect {
+        @apply relative overflow-hidden;
+      }
+      
+      .button-hover-effect::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px; 
+        background-color:  #991b1b; 
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      
+      .button-hover-effect:hover::after {
+        transform: translateX(0);
+      }
+      
